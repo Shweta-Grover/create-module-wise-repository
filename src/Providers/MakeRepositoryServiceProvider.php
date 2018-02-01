@@ -1,9 +1,9 @@
 <?php
 
-namespace App\CreateModuleReposiitory\repo\Providers;
+namespace createmodulewiserepo\repo\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\CreateModuleReposiitory\repo\Commands\MakeRepositoryCommand;
+use createmodulewiserepo\Commands\MakeRepositoryCommand;
 
 class MakeRepositoryServiceProvider extends ServiceProvider
 {

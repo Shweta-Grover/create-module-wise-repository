@@ -1,5 +1,5 @@
 <?php
-namespace App\CreateModuleReposiitory\repo\Commands;
+namespace createmodulewiserepo\Commands;
 
 use Illuminate\Console\Command;
 
