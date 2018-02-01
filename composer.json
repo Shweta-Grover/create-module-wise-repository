@@ -10,7 +10,7 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"createmodulewiserepo\repo" : "src"
+			"createmodulewiserepo\\repo\\" : "src"
 		}
 	},
 	"license" : "Apache-2.0",
