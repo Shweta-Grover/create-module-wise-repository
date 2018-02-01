@@ -8,6 +8,11 @@
 	"require-dev" : {
 		"nwidart/laravel-modules" : "^1.27"
 	},
+	"autoload" : {
+		"psr-2" : {
+			"createmodulewiserepo\repo" : "src"
+		}
+	},
 	"license" : "Apache-2.0",
 	"minimum-stability" : "dev"
 }
