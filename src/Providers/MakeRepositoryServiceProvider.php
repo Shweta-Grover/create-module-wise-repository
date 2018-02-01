@@ -3,7 +3,7 @@
 namespace createmodulewiserepo\repo\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use createmodulewiserepo\Commands\MakeRepositoryCommand;
+use createmodulewiserepo\repo\Commands\MakeRepositoryCommand;
 
 class MakeRepositoryServiceProvider extends ServiceProvider
 {
