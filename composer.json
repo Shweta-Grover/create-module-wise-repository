@@ -9,7 +9,7 @@
 		"nwidart/laravel-modules" : "^1.27"
 	},
 	"autoload" : {
-		"psr-2" : {
+		"psr-4" : {
 			"createmodulewiserepo\repo" : "src"
 		}
 	},
