@@ -1,7 +1,7 @@
 {
 	"name" : "createmodulewiserepo/repo",
 	"description" : "Create Module wise repository",
-	"type" : "composer-plugin",
+	"type" : "library",
 	"require" : {
 		"nwidart/laravel-modules" : "^1.27"
 	},
