@@ -3,10 +3,10 @@
 	"description" : "Create Module wise repository",
 	"type" : "library",
 	"require" : {
-		"nwidart/laravel-modules" : "^1.27"
+		"nwidart/laravel-modules" : ">=1.27"
 	},
 	"require-dev" : {
-		"nwidart/laravel-modules" : "^1.27"
+		"nwidart/laravel-modules" : ">=1.27"
 	},
 	"autoload" : {
 		"psr-4" : {
