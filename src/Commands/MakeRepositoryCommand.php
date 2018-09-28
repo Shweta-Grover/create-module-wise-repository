@@ -48,12 +48,16 @@ class MakeRepositoryCommand extends Command
 
             $moduleName = $this->argument('module');
 
-            $filePath = "Modules/" . $moduleName . "/Repositories/" . $repoName . ".php";
+            $folderPath = "Modules".DIRECTORY_SEPARATOR.$moduleName.DIRECTORY_SEPARATOR."Repositories";
+            $filePath = $folderPath.DIRECTORY_SEPARATOR.$repoName.".php";
 
             // if repository already exists
             if (file_exists($filePath)) {
                 $this->info("Repository already exists");
             } else {
+                if (!file_exists($folderPath)) {
+                    mkdir($folderPath);
+                }
                 $repositoryParameters = new \stdClass();
 
                 $repoFile = fopen($filePath, "w");
@@ -92,9 +96,11 @@ class MakeRepositoryCommand extends Command
         if ($repositoryParameters->modelName != null) {
             $modelFilePath = "Modules/" . $repositoryParameters->moduleName . "/Entities/" . $repositoryParameters->modelName . ".php";
             if (! file_exists($modelFilePath)) {
-                // $modelFile = fopen($modelFilePath,"w");
                 $this->createModelFile($repositoryParameters);
             }
+        }
+
+        if ($repositoryParameters->interfaceName != null) {
             $this->useInterfaceModelCode($repositoryParameters);
         }
     }
@@ -153,10 +159,6 @@ class MakeRepositoryCommand extends Command
      */
     private function useInterfaceModelCode($repositoryParameters)
     {
-        $modelLibraryPath = "use Illuminate\Database\Eloquent\Model;\r\n";
-
-        fwrite($repositoryParameters->repoFile, $modelLibraryPath);
-
         // if interface option is given
         if ($repositoryParameters->interfaceName != null) {
             $interfaceFilePath = "Modules\\" . $repositoryParameters->moduleName . "\Repositories\\" . $repositoryParameters->interfaceName . ".php";
@@ -164,9 +166,6 @@ class MakeRepositoryCommand extends Command
                 $interfaceFile = fopen($interfaceFilePath, "w");
                 $this->createInterfaceFile($repositoryParameters, $interfaceFile);
             }
-
-            $useInterfaceCode = "use Modules\\" . $repositoryParameters->moduleName . "\Repositories\\" . $repositoryParameters->interfaceName . ";\r\n\r\n";
-            fwrite($repositoryParameters->repoFile, $useInterfaceCode);
         } else {
             fwrite($repositoryParameters->repoFile, "\r\n");
         }
@@ -224,6 +223,9 @@ class MakeRepositoryCommand extends Command
             'model' => $repositoryParameters->modelName,
             'module' => $repositoryParameters->moduleName
         ]);
+        $modelLibraryPath = "use Illuminate\Database\Eloquent\Model;\r\n\r\n";
+
+        fwrite($repositoryParameters->repoFile, $modelLibraryPath);
     }
 
     /**
